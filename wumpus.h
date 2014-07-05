@@ -391,13 +391,13 @@ class Player
                         board.array[i][j].setPlayer(0);
                         if (board.array[x][y].getPit() == 1)
                         {
-							returnString += "YOU FELL IN A PIT!";
+							returnString += " YOU FELL IN A PIT!";
                             //return 1;
                         }
 
                         else if (board.array[x][y].getArrow() == 1)
                         {
-							returnString += "YOU FOUND AN ARROW!";
+							returnString += " YOU FOUND AN ARROW!";
                             board.array[x][y].setArrow(0);
                             board.array[x][y].setPlayer(1);
                             arrows++;
@@ -406,12 +406,12 @@ class Player
                         else if (board.array[x][y].getBat() == 1)
                         {
                             board.array[i][j].setPlayer(1);
-							returnString += "A Superbat has taken you to an unknown location in the cavern!";
+							returnString += " A Superbat has taken you to an unknown location in the cavern!";
                             this -> batTeleport(board);
                         }
                         else if (board.array[x][y].getWumpus() == 1)
                         {
-							returnString += "You stumbled upon a Wumpus and were prompty eaten by him.";
+							returnString += " You stumbled upon a Wumpus and were prompty eaten by him.";
                             //cout << "GAME OVER" << endl;
                             //return 1;
                         }

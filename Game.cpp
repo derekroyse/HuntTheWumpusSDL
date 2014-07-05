@@ -39,6 +39,7 @@ void Game::init(const char* title) {
 }
 
 void Game::run() {
+	std::string locationImage;
 	// Create game objects
 	srand(time(NULL));
 	Board test;
@@ -54,9 +55,6 @@ void Game::run() {
 	test.generateBoard();
 	test.populateBoard();
 	player1.updateLocation(test);
-
-	//get Images
-	gameDisplay->getImages(m_Images);
 
 	// Set background color to white.
 	SDL_SetRenderDrawColor(m_pRenderer, 255, 255, 255, 255);
@@ -99,16 +97,21 @@ void Game::run() {
 			// Standard move
 			else
 			{
-				gameDisplay->addText(player1.move(m_icommand, test), m_Text, 0);
+				locationImage = player1.move(m_icommand, test);
+				gameDisplay->addText(locationImage, m_Text, 0);
 			}
 
 		}
+
+		//get Images
+		gameDisplay->getImages(m_Images, locationImage);
 
 		// clear window
 		SDL_RenderClear(m_pRenderer);
 
 		// draw images
 		TManager->draw(m_pRenderer, m_Images);
+		m_Images.clear();
 
 		// write text
 		TManager->write(m_pRenderer, m_Text);

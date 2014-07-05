@@ -30,7 +30,8 @@ public:
 
 		//a lot of the stuff here will need removed from the loop
 		for (int i = 0; i < f_Images.size(); i++) {
-
+			
+			int currentFrame = f_Images[i]->getFrame();
 			const int WALKING_ANIMATION_FRAMES = 5;
 			std::vector<SDL_Rect> gSpriteClips(WALKING_ANIMATION_FRAMES);
 			gSpriteClips = f_Images[i]->getAnimationArray();
@@ -50,6 +51,7 @@ public:
 				m_srcRect.h = gSpriteClips[f_Images[i]->getFrame()].h;
 				m_srcRect.x = gSpriteClips[f_Images[i]->getFrame()].x;
 				m_srcRect.y = gSpriteClips[f_Images[i]->getFrame()].y;
+				f_Images[i]->setCurrentFrame(currentFrame++);
 			}
 			else
 			{
